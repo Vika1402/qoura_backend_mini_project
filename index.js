@@ -35,19 +35,19 @@ let posts=[
   }
 ];
 
-
+// see all post in a page 
 app.get("/posts",(req,res)=>{
   res.render("index.ejs",{posts})
 })
-
+//to add new post using form page 
 app.get("/posts/new",(req,res)=>{
   res.render("new.ejs",{posts})
 })
-
+// after submit is redirest and show all post 
 app.post("/posts",(req,res)=>{
   let {username,content}=req.body;
   posts.push({username,content})
-  res.send("post send successfully")
+  res.redirect("/posts")
 })
 
 
