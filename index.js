@@ -14,21 +14,25 @@ app.use(express.urlencoded({extended:true}));
 
 let posts=[
   {
+    id:"1a",
     username:"vikas kumar",
     content:"I love coding ",
 
   },
   {
+    id:"2b",
     username:"mehata ji ",
     content:"tark mehta ka ulta chasma ",
     
   },
   {
+    id:"3c",
     username:"jetha lal",
     content:"I love gujrat ",
     
   },
   {
+    id:"4d",
     username:"bidhe uncle ",
     content:"i am marathi man ",
     
@@ -48,6 +52,13 @@ app.post("/posts",(req,res)=>{
   let {username,content}=req.body;
   posts.push({username,content})
   res.redirect("/posts")
+})
+
+app.get("/posts/:id",(req,res)=>{
+  let {id}=req.params;
+  let post=posts.find((p)=>id===p.id)
+  console.log(id);
+  res.render("show.ejs",{post})
 })
 
 
